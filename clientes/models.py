@@ -18,3 +18,14 @@ class Person(models.Model):
 
   def __str__(self):
     return self.first_name + ' ' + self.last_name
+
+  
+class Sales(models.Model):
+  number = models.CharField(max_length=30)
+  value = models.DecimalField(max_digits=5, decimal_places=2)
+  discount = models.DecimalField(max_digits=5, decimal_places=2)
+  tax = models.DecimalField(max_digits=5, decimal_places=2)
+  person = models.ForeignKey(Person, null=True, blank=True, on_delete=models.PROTECT)
+  
+  def __str__(self):
+    return self.number
